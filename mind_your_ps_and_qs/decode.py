@@ -1,0 +1,19 @@
+# https://ctf.amanroy.me/2022/04/19/mind-your-ps-and-qs
+
+# already given
+c = 62324783949134119159408816513334912534343517300880137691662780895409992760262021
+n = 1280678415822214057864524798453297819181910621573945477544758171055968245116423923
+e = 65537
+
+
+# Find factors using - https://www.dcode.fr/prime-factors-decomposition
+p = 1899107986527483535344517113948531328331
+q = 674357869540600933870145899564746495319033
+
+# compute 
+phi_n = (p-1)*(q-1)
+d = pow(e, -1, phi_n)
+plaintext = pow(c,d,n)
+
+# print
+print(bytearray.fromhex(hex(plaintext)[2:]).decode())
